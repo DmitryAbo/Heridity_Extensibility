@@ -1,9 +1,9 @@
 package ru.netology.domain;
 
-public class Book extends Product{
+public class Book extends Product {
     private String author;
 
-    public Book(){
+    public Book() {
         super();
     }
 
@@ -21,10 +21,10 @@ public class Book extends Product{
     }
 
     @Override
-    public boolean matches(String search){
-        if (super.matches(search)){
+    public boolean matches(String search) {
+        if (super.matches(search)) {
             return true;
-        }else {
+        } else {
             return author.contains(search);
         }
     }

@@ -11,7 +11,7 @@ class ProductTest {
         int expected = 1;
         Product product = new Product(1, "Мороженое", 50);
         int actual = product.getId();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -20,7 +20,7 @@ class ProductTest {
         Product product = new Product();
         product.setId(1);
         int actual = product.getId();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -28,7 +28,7 @@ class ProductTest {
         String expected = "Молоко";
         Product product = new Product(1, "Молоко", 50);
         String actual = product.getName();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -37,7 +37,7 @@ class ProductTest {
         Product product = new Product();
         product.setName("Молоко");
         String actual = product.getName();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -45,7 +45,7 @@ class ProductTest {
         int expected = 50;
         Product product = new Product(1, "Мороженое", 50);
         int actual = product.getPrice();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -54,6 +54,6 @@ class ProductTest {
         Product product = new Product();
         product.setPrice(50);
         int actual = product.getPrice();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 }

@@ -9,9 +9,9 @@ class BookTest {
     @Test
     void shouldGetAuthor() {
         String expected = "Кинг";
-        Book book = new Book(1,"Зеленая миля",400,"Кинг");
+        Book book = new Book(1, "Зеленая миля", 400, "Кинг");
         String actual = book.getAuthor();
-        assertEquals(actual,expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -20,6 +20,6 @@ class BookTest {
         Book book = new Book();
         book.setAuthor("Кинг");
         String actual = book.getAuthor();
-        assertEquals(actual,expected);
+        assertEquals(expected, actual);
     }
 }

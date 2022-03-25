@@ -1,6 +1,6 @@
 package ru.netology.domain;
 
-public class SmartPhone extends Product{
+public class SmartPhone extends Product {
     private String manufacturer;
 
     public SmartPhone() {
@@ -21,10 +21,10 @@ public class SmartPhone extends Product{
     }
 
     @Override
-    public boolean matches(String search){
-        if (super.matches(search)){
+    public boolean matches(String search) {
+        if (super.matches(search)) {
             return true;
-        }else {
+        } else {
             return manufacturer.contains(search);
         }
     }

@@ -12,44 +12,42 @@ public class Manager {
         this.repo = repo;
     }
 
-    public Manager() {
-    }
-
     public void add(Product product) {
         repo.saveProduct(product);
     }
 
     public Product[] searchBy(String text) {                        //Поиск продукта по name
         Product[] result = new Product[0];                          //массив в котором будем возвращать найденные продукты
-        int i = 0;
-        Product[] tmp = new Product[repo.getAllProducts().length];  //массив куда будем помещать найденные элементы во время поиска по умолчанию считаем что подощли все товары
 
         for (Product product : repo.getAllProducts()) {             //Если в продукте книга
-            if (product instanceof Book){
+            if (product instanceof Book) {
                 Book book = (Book) product;
                 if (book.matches(text)) {
-                    tmp[i] = book;
-                    i++;
+                    Product[] tmp = new Product[result.length + 1];
+                    System.arraycopy(result, 0, tmp, 0, result.length);
+                    tmp[tmp.length - 1] = book;
+                    result = new Product[tmp.length];
+                    System.arraycopy(tmp, 0, result, 0, tmp.length);
                 }
-            }else if(product instanceof SmartPhone){                //Если в продукте смартфон
+            } else if (product instanceof SmartPhone) {                //Если в продукте смартфон
                 SmartPhone phone = (SmartPhone) product;
                 if (phone.matches(text)) {
-                    tmp[i] = phone;
-                    i++;
+                    Product[] tmp = new Product[result.length + 1];
+                    System.arraycopy(result, 0, tmp, 0, result.length);
+                    tmp[tmp.length - 1] = phone;
+                    result = new Product[tmp.length];
+                    System.arraycopy(tmp, 0, result, 0, tmp.length);
                 }
-            }else{
-                if(product.matches(text)){                          //если в продукте продукт
-                    tmp[i] = product;
-                    i++;
+            } else {
+                if (product.matches(text)) {                          //если в продукте продукт
+                    Product[] tmp = new Product[result.length + 1];
+                    System.arraycopy(result, 0, tmp, 0, result.length);
+                    tmp[tmp.length - 1] = product;
+                    result = new Product[tmp.length];
+                    System.arraycopy(tmp, 0, result, 0, tmp.length);
                 }
             }
         }
-
-        if (i != 0) {
-            result = new Product[i];
-            System.arraycopy(tmp,0,result,0,i);
-        }
-
         return result;
     }
 

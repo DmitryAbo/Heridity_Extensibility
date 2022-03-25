@@ -11,16 +11,17 @@ public class Repository {
             tmp[i] = products[i];
         }
         tmp[tmp.length - 1] = product;
-        products = tmp;
+        products = new Product[tmp.length];
+        System.arraycopy(tmp, 0, products, 0, tmp.length);
     }
 
-    public Product[] getAllProducts(){
+    public Product[] getAllProducts() {
         Product[] result = new Product[products.length];
         System.arraycopy(products, 0, result, 0, products.length);
         return result;
     }
 
-    public void removeById(int id){
+    public void removeById(int id) {
         Product[] tmp = new Product[products.length - 1];
         int copyToIndex = 0;
         for (int i = 0; i < products.length; i++) {
