@@ -19,7 +19,7 @@ public class Manager {
         repo.saveProduct(product);
     }
 
-    public Product[] searchBy(String text) {                        //поиск продукта по name в родительском классе
+    public Product[] searchBy(String text) {                        //Поиск продукта по name
         Product[] result = new Product[0];                          //массив в котором будем возвращать найденные продукты
         int i = 0;
         Product[] tmp = new Product[repo.getAllProducts().length];  //массив куда будем помещать найденные элементы во время поиска по умолчанию считаем что подощли все товары
