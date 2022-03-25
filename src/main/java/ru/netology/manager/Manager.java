@@ -10,9 +10,6 @@ public class Manager {
         this.repo = repo;
     }
 
-    public Manager() {
-    }
-
     public void add(Product product) {
         repo.saveProduct(product);
     }

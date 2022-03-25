@@ -14,12 +14,12 @@ class ManagerTest {
     Product prod2 = new Book(13, "О дивный новый мир", 500, "Хаскли");
     Product prod3 = new SmartPhone(14, "Apple", 100_000, "Китай");
     Product prod4 = new Book(15, "Молоко как смысл жизни", 100, "Богомолов");
+    Repository repo = new Repository();
+    Manager manager = new Manager(repo);
 
     @Test
     void shouldAddOneProduct() {
-        Repository repo = new Repository();
         Product[] expected = new Product[]{prod1};
-        Manager manager = new Manager(repo);
         manager.add(prod1);
         Product[] actual = repo.getAllProducts();
         assertArrayEquals(expected, actual);
@@ -27,9 +27,7 @@ class ManagerTest {
 
     @Test
     void shouldAddSameProductDifferentClasses() {
-        Repository repo = new Repository();
         Product[] expected = new Product[]{prod1, prod2, prod3};
-        Manager manager = new Manager(repo);
         manager.add(prod1);
         manager.add(prod2);
         manager.add(prod3);
@@ -40,7 +38,6 @@ class ManagerTest {
     @Test
     void shouldFindOneProductBySearch() {
         Product[] expected = new Product[]{prod1};
-        Manager manager = new Manager();
         manager.add(prod1);
         manager.add(prod2);
         manager.add(prod3);
@@ -51,9 +48,7 @@ class ManagerTest {
 
     @Test
     void shouldFindSameProductBySearchDifferentClasses() {
-        Repository repo = new Repository();
         Product[] expected = new Product[]{prod1, prod4};
-        Manager manager = new Manager(repo);
         manager.add(prod1);
         manager.add(prod2);
         manager.add(prod3);
@@ -65,9 +60,7 @@ class ManagerTest {
 
     @Test
     void shouldNoResultsBySearch() {
-        Repository repo = new Repository();
         Product[] expected = new Product[0];
-        Manager manager = new Manager(repo);
         manager.add(prod1);
         manager.add(prod2);
         manager.add(prod3);
