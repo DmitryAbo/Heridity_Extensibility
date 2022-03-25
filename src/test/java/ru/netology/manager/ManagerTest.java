@@ -14,6 +14,7 @@ class ManagerTest {
     Product prod2 = new Book(13,"О дивный новый мир",500,"Хаскли");
     Product prod3 = new SmartPhone(14,"Apple",100_000,"Китай");
     Product prod4 = new Book(13,"Молоко как смысл жизни",100,"Богомолов");
+    Product prod5 = new SmartPhone(15,"Молоко-phone",500,"Россия");
 
     @Test
     void shouldAddOneProduct(){
@@ -52,12 +53,13 @@ class ManagerTest {
     @Test
     void shouldFindSameProductBySearchDifferentClasses(){
         Repository repo = new Repository();
-        Product[] expected = new Product[]{prod1,prod4};
+        Product[] expected = new Product[]{prod1,prod4,prod5};
         Manager manager = new Manager(repo);
         manager.add(prod1);
         manager.add(prod2);
         manager.add(prod3);
         manager.add(prod4);
+        manager.add(prod5);
         Product[] actual = manager.searchBy("Молоко");
         assertArrayEquals(actual,expected);
 
@@ -76,5 +78,30 @@ class ManagerTest {
         assertArrayEquals(actual,expected);
     }
 
+    @Test
+    void shouldFindBookByAuthor(){
+        Repository repo = new Repository();
+        Product[] expected = new Product[]{prod2};
+        Manager manager = new Manager(repo);
+        manager.add(prod1);
+        manager.add(prod2);
+        manager.add(prod3);
+        manager.add(prod4);
+        Product[] actual = manager.searchBy("Хаскли");
+        assertArrayEquals(actual,expected);
+    }
+
+    @Test
+    void shouldFindSmartphoneByManufacturer(){
+        Repository repo = new Repository();
+        Product[] expected = new Product[]{prod3};
+        Manager manager = new Manager(repo);
+        manager.add(prod1);
+        manager.add(prod2);
+        manager.add(prod3);
+        manager.add(prod4);
+        Product[] actual = manager.searchBy("Китай");
+        assertArrayEquals(actual,expected);
+    }
 
 }
