@@ -19,21 +19,15 @@ public class Manager {
 
     public Product[] searchBy(String text) {                        //Поиск продукта по name
         Product[] result = new Product[0];                          //массив в котором будем возвращать найденные продукты
-        int i = 0;
-        Product[] tmp = new Product[repo.getAllProducts().length];  //массив куда будем помещать найденные элементы во время поиска по умолчанию считаем что подощли все товары
-
         for (Product product : repo.getAllProducts()) {
             if (matches(product, text)) {
-                tmp[i] = product;
-                i++;
+                Product[] tmp = new Product[result.length + 1];
+                System.arraycopy(result, 0, tmp, 0, result.length);
+                tmp[tmp.length - 1] = product;
+                result = new Product[tmp.length];
+                System.arraycopy(tmp, 0, result, 0, tmp.length);
             }
         }
-
-        if (i != 0) {
-            result = new Product[i];
-            System.arraycopy(tmp,0,result,0,i);
-        }
-
         return result;
     }
 

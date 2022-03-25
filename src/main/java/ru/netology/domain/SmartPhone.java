@@ -1,6 +1,6 @@
 package ru.netology.domain;
 
-public class SmartPhone extends Product{
+public class SmartPhone extends Product {
     private String manufacturer;
 
     public SmartPhone(String manufacturer) {
