@@ -7,19 +7,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class SmartPhoneTest {
 
     @Test
-    void shouldGetManufacturer() {
-        String expected = "China";
-        SmartPhone phone = new SmartPhone(1, "Apple", 100_000, "China");
-        String actual = phone.getManufacturer();
-        assertEquals(expected, actual);
+    void shouldFindByManufacturer() {
+        Product phone = new SmartPhone(1, "Apple", 100_000, "Китай");
+        boolean actual = phone.matches("Китай");
+        assertTrue(actual);
     }
 
     @Test
-    void shouldSetManufacturer() {
-        String expected = "China";
-        SmartPhone phone = new SmartPhone();
-        phone.setManufacturer("China");
-        String actual = phone.getManufacturer();
-        assertEquals(expected, actual);
+    void shouldFindByName() {
+        Product phone = new SmartPhone(1, "Apple", 100_000, "Китай");
+        boolean actual = phone.matches("Apple");
+        assertTrue(actual);
+    }
+
+    @Test
+    void shouldNoFindByManufacturer() {
+        Product phone = new SmartPhone(1, "Apple", 100_000, "Китай");
+        boolean actual = phone.matches("Не найдешь");
+        assertFalse(actual);
     }
 }

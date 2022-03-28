@@ -7,19 +7,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookTest {
 
     @Test
-    void shouldGetAuthor() {
-        String expected = "Кинг";
-        Book book = new Book(1, "Зеленая миля", 400, "Кинг");
-        String actual = book.getAuthor();
-        assertEquals(expected, actual);
+    void shouldFindByAuthor() {
+        Product book = new Book(1, "О дивный новый мир", 500, "Хаскли");
+        boolean actual = book.matches("Хаскли");
+        assertTrue(actual);
     }
 
     @Test
-    void shouldSetAuthor() {
-        String expected = "Кинг";
-        Book book = new Book();
-        book.setAuthor("Кинг");
-        String actual = book.getAuthor();
-        assertEquals(expected, actual);
+    void shouldFindByName() {
+        Product book = new Book(1, "О дивный новый мир", 500, "Хаскли");
+        boolean actual = book.matches("О дивный новый мир");
+        assertTrue(actual);
+    }
+
+    @Test
+    void shouldNoFindByAuthor() {
+        Product book = new Book(1, "О дивный новый мир", 500, "Хаскли");
+        boolean actual = book.matches("Не найдешь");
+        assertFalse(actual);
     }
 }
