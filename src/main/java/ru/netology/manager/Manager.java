@@ -21,8 +21,7 @@ public class Manager {
                 Product[] tmp = new Product[result.length + 1];
                 System.arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = product;
-                result = new Product[tmp.length];
-                System.arraycopy(tmp, 0, result, 0, tmp.length);
+                result = tmp;
             }
         }
         return result;

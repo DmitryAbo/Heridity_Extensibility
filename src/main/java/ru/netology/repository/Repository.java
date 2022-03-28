@@ -7,12 +7,9 @@ public class Repository {
 
     public void saveProduct(Product product) {
         Product[] tmp = new Product[products.length + 1];
-        for (int i = 0; i < products.length; i++) {
-            tmp[i] = products[i];
-        }
+        System.arraycopy(products,0,tmp,0,products.length);
         tmp[tmp.length - 1] = product;
-        products = new Product[tmp.length];
-        System.arraycopy(tmp, 0, products, 0, tmp.length);
+        products = tmp;
     }
 
     public Product[] getAllProducts() {
